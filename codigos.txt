@@ -1,0 +1,19 @@
+$ts = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$env:REPORT_DIR = "reportes/LoginNormal/$ts"
+npx playwright test tests/LoginNormal.spec.ts
+
+$ts = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$env:REPORT_DIR = "reportes/LoginFallido/$ts"
+npx playwright test tests/LoginFallido.spec.ts
+
+$ts = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$env:REPORT_DIR = "reportes/Users_Create_Bodega_Login.spec.ts/$ts"
+npx playwright test tests/Users_Create_Bodega_Login.spec.ts
+
+$ts = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$env:REPORT_DIR = "reportes/Inventory_Delete_One.spec.ts/$ts"
+npx playwright test tests/Inventory_Delete_One.spec.ts
+
+$ts = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$env:REPORT_DIR = "reportes/Sales_AddToCart_Confirm_Print.spec.ts/$ts"
+npx playwright test tests/Sales_AddToCart_Confirm_Print.spec.ts
