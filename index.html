@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de Reportes | Grupo 4</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-strong: #0ea5e9;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    main {
+      display: grid;
+      gap: 1rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    a {
+      display: block;
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px var(--accent-strong);
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      max-width: 900px;
+      width: 100%;
+      line-height: 1.6;
+    }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    ul {
+      list-style: none;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    p, li {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    ol {
+      color: var(--muted);
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ol li {
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Resumen de Reportes de Playwright</h1>
+    <p>Grupo 4 — Curso de Aseguramiento de la Calidad del Software</p>
+  </header>
+
+  <main>
+    <a href="reportes/Inventory_Delete_One.spec.ts/2025-10-15_12-43-16/index.html" target="_blank">🗑️ Borrar Producto - versión 1</a>
+    <a href="reportes/Inventory_Delete_One.spec.ts/2025-10-15_14-55-59/index.html" target="_blank">🗑️ Borrar Producto - versión 2</a>
+    <a href="reportes/LoginFallido/2025-10-15_12-01-53/index.html" target="_blank">❌ Login fallido intencional</a>
+    <a href="reportes/LoginNormal/2025-10-15_11-18-06/index.html" target="_blank">✅ Login normal satisfactorio</a>
+    <a href="reportes/Sales_AddToCart_Confirm_Print.spec.ts/2025-10-15_15-31-51/index.html" target="_blank">🛒 Proceso de ventas - versión 1</a>
+    <a href="reportes/Sales_AddToCart_Confirm_Print.spec.ts/2025-10-15_16-11-31/index.html" target="_blank">🛒 Proceso de ventas - versión 2</a>
+    <a href="reportes/Users_Create_Bodega_Login.spec.ts/2025-10-15_12-18-05/index.html" target="_blank">🏬 Crear usuario de bodega</a>
+  </main>
+
+  <section>
+    <h2>Conclusiones</h2>
+    <p>Las pruebas automatizadas realizadas con Playwright permitieron evaluar el funcionamiento del sistema ERP en sus módulos principales bajo diferentes entornos de ejecución y navegadores.</p>
+    <p>Los resultados evidencian un comportamiento estable en los flujos de inventario y validaciones de login, mientras que los módulos de creación de usuarios y ventas mostraron fallos por tiempo de espera o duplicidad de elementos, relacionados con aspectos de sincronización o dependencias lógicas entre páginas.</p>
+
+    <ol>
+      <li>El test <strong>LoginNormal.spec.ts</strong> presentó éxito parcial: solo Microsoft Edge completó el flujo correctamente, indicando que el sistema es funcional, pero requiere mejoras en compatibilidad o tiempos de carga en otros navegadores.</li>
+      <li>El test <strong>LoginFallido.spec.ts</strong> obtuvo un 100% de éxito, confirmando la robustez de las validaciones de seguridad frente a credenciales incorrectas o vacías.</li>
+      <li>El caso <strong>Users_Create_Bodega_Login.spec.ts</strong> falló en todos los entornos debido a colisión entre campos de contraseña y confirmación, lo cual refleja un problema de selector duplicado en el formulario más que una falla de la lógica del sistema.</li>
+      <li>El test <strong>Inventory_Delete_One.spec.ts</strong> fue exitoso en todos los navegadores, demostrando la estabilidad del módulo de inventario y la correcta actualización de la interfaz tras operaciones CRUD.</li>
+      <li>El caso <strong>Sales_AddToCart_Confirm_Print.spec.ts</strong> falló de forma generalizada, lo que sugiere que el flujo de ventas depende del estado previo de “Caja abierta” y que las pruebas necesitan incluir un control condicional para detectar dicho estado antes de continuar.</li>
+    </ol>
+
+    <p>En conjunto, las pruebas confirman que el sistema ERP cumple con sus funciones esenciales, siendo confiable en autenticación, seguridad y gestión de inventario. Sin embargo, se identifican áreas que requieren ajustes en temporización, dependencias entre módulos y manejo de elementos dinámicos.</p>
+  </section>
+
+  <section>
+    <h2>Recomendaciones</h2>
+    <ul>
+      <li><strong>Optimización de selectores y tiempos de espera:</strong> Ajustar los localizadores ambiguos (como los campos de contraseña duplicados) y ampliar los tiempos de espera (<code>waitForSelector</code>, <code>polling</code>, <code>expect.toBeVisible</code>) en modales o alertas dinámicas.</li>
+      <li><strong>Refinamiento de escenarios de usuario:</strong> Dividir los tests extensos en escenarios más pequeños y modulares, que puedan reutilizarse y mantener coherencia entre ejecuciones (por ejemplo, “Abrir Caja” → “Agregar Venta” → “Cerrar Caja”).</li>
+      <li><strong>Compatibilidad multibrowser:</strong> Analizar las diferencias de comportamiento entre motores (Chromium, WebKit, Firefox) para garantizar que las funciones críticas respondan igual en todos los navegadores.</li>
+      <li><strong>Extensión de cobertura:</strong> Ampliar los casos a módulos secundarios como reportes, configuración de roles y generación de facturas, de modo que la automatización cubra el ciclo completo de operaciones del ERP.</li>
+      <li><strong>Automatización continua (CI/CD):</strong> Integrar los tests de Playwright en un flujo de validación continua mediante GitHub Actions o Jenkins, asegurando que cada actualización del sistema dispare pruebas automáticas con reportes HTML versionados.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Integrantes</h2>
+    <ul>
+      <li>César Alejandro Pérez Méndez — 0905-21-1176</li>
+      <li>Rodrigo Ernesto García Zamora — 0905-21-12737</li>
+      <li>Samuel Aroldo Gerónimo Rosales — 0902-21-12151</li>
+      <li>Luis Fernando García Lucero — 0905-20-3265</li>
+      <li>Josué Caleb Jiménez Santos — 0905-21-18837</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2>Docente</h2>
+    <ul>
+      <li>Ing. Heber Joel Buenafé Chinchilla</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Grupo 4 — Reportes de Pruebas Automáticas con Playwright
+  </footer>
+</body>
+</html>
